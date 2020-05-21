@@ -178,6 +178,10 @@ class Connection
         foreach ($data['subscribers'] as $arraySubscriber) {
             $subscribers[] = $arraySubscriber['streamId'];
         }
+
+		if ($data['createdAt'] > 2 ** 32) {
+			$data['createdAt'] /= 1000;
+		}
         return new Connection(
             $data['connectionId'],
             (new DateTime())->setTimestamp($data['createdAt']),

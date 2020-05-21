@@ -44,6 +44,10 @@ class Recording
      */
     public function __construct(array $values)
     {
+		if ($values['createdAt'] > 2 ** 32) {
+			$values['createdAt'] /= 1000;
+		}
+
         $this->id = (string)$values['id'];
         $this->sessionId = (string)$values['sessionId'];
         $this->createdAt = (new DateTime())->setTimestamp($values['createdAt']);

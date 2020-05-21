@@ -266,6 +266,9 @@ class Session
     {
         $this->sessionId = (string)$data['sessionId'];
         if ($data['createdAt']) {
+        	if ($data['createdAt'] > 2 ** 32) {
+        		$data['createdAt'] /= 1000;
+			}
             $this->createdAt = $this->createdAt->setTimestamp($data['createdAt']);
         }
         $this->recording = (bool)$data['recording'];

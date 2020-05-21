@@ -132,6 +132,10 @@ class Publisher
     public static function createFromDataArray(array $data)
     {
         $mediaOptions = $data['mediaOptions'];
+		if ($data['createdAt'] > 2 ** 32) {
+			$data['createdAt'] /= 1000;
+		}
+
         return new self(
             $data['streamId'],
             (new DateTime())->setTimestamp($data['createdAt']),
