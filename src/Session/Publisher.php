@@ -131,7 +131,14 @@ class Publisher
 
     public static function createFromDataArray(array $data)
     {
-        $mediaOptions = $data['mediaOptions'];
+        $mediaOptions = array_merge([
+			'audioActive' => false,
+			'videoActive' => false,
+			'frameRate' => 30,
+			'typeOfVideo' => '',
+			'videoDimensions' => 'unknown',
+		], $data['mediaOptions']);
+
 		if ($data['createdAt'] > 2 ** 32) {
 			$data['createdAt'] /= 1000;
 		}
