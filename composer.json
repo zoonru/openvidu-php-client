@@ -1,5 +1,5 @@
 {
-  "name": "stopka/openvidu-php-client",
+  "name": "zoonru/openvidu-php-client",
   "type": "library",
   "description": "Php client for openvidu server",
   "homepage": "https://github.com/Stopka/openvidu-php-client",
