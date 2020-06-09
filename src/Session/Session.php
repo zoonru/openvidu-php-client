@@ -138,6 +138,24 @@ class Session
         return $builder->build();
     }
 
+	public function signal($type = null, $data = null, array $to = null) {
+		if ($type === null && $data === null) {
+			throw new \InvalidArgumentException("Missing 'data' or 'type' argument");
+		}
+		$requestData = [
+			'session' => $this->sessionId,
+		];
+		if ($type !== null) $requestData['type'] = $type;
+		if ($data !== null) $requestData['data'] = $data;
+		if ($to !== null) $requestData['to'] = $to;
+
+		try {
+			$this->restClient->post(OpenVidu::SIGNAL_URL, $requestData);
+		} catch (RestClientException $e) {
+			throw new OpenViduException("Unable to send signal", 0, $e);
+		}
+    }
+
     /**
      *
      */

@@ -28,6 +28,7 @@ class OpenVidu
     const RECORDINGS_URL = "api/recordings";
     const RECORDINGS_START_URL = "api/recordings/start";
     const RECORDINGS_STOP_URL = "api/recordings/stop";
+    const SIGNAL_URL = "api/signal";
 
     /** @var  string */
     protected $urlOpenViduServer;
